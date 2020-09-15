@@ -1,3 +1,8 @@
+<p align="center">
+<img src = "https://user-images.githubusercontent.com/20601076/93276526-29671d00-f796-11ea-8f92-c3b4fe31383c.jpg" width = "250" height = "250">
+</p>
+
+
 # Aplicativo mapa dos sonhos
 
 Aplicativo para criação de listas de sonhos baseando-se no modelo Canvas.
@@ -73,5 +78,8 @@ Observações:
 Aplicativo de patente do grupo EMPREENDESCOLA da UFPI - Universidade Federal do Piauí.
 
 **Ideia e desenvolvimento:** Grupo Empreendescola.
+
+
+Considerações do desenvolvedor: Mesmo que o aplicativo esteja no repositório do GitHub do Francisco Maik (Desenvolvedor) a aplicação são de todos os membros participantes do grupo **Empreendescola**. Enquanto desenvolvedor do projeto o mesmo se dispõe a fazer alterações mediante solicitações dos membros do projeto até a data de encerramento do projeto. Havendo mudança de desenvolvedor estarei compartilhando o repositório com o próximo desenvolvedor mediando aceitação e declaração dos membros do grupo Empreendescola e o após esta passagem o Francisco Maik não se responsabiliza por mudanças futuras na aplicação.
 
 Terça-feira 15 de Setembro de 2020.
