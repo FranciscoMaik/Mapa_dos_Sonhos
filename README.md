@@ -73,7 +73,7 @@ Observações:
 
  -[] Adicionar CheckBox nos Itens
 
-### Patente e Ideia
+### Registro e Ideia
 
 Aplicativo de patente do grupo EMPREENDESCOLA da UFPI - Universidade Federal do Piauí.
 

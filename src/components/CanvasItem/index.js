@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Alert,
   TextInput,
-  CheckBox,
   Modal,
   TouchableHighlight,
   Keyboard,
@@ -23,7 +22,6 @@ import styles from './style';
 
 const CanvasItem = ({ title, color, children, id, id_dream }) => {
   const [Item, setItem] = useState([]);
-  const [isCheck, setIsCheck] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [inputItem, setInputItem] = useState('');
 
@@ -35,6 +33,7 @@ const CanvasItem = ({ title, color, children, id, id_dream }) => {
         created: `${Date.now()}`,
         id_dream: id_dream,
         id_object: id,
+        selected: false,
       };
 
       const realm = await getRealm();
@@ -48,33 +47,48 @@ const CanvasItem = ({ title, color, children, id, id_dream }) => {
     }
   }
 
-  useEffect(() => {
-    async function loadItens() {
-      const realm = await getRealm();
-      const data = realm
-        .objects('ObjectDream')
-        .filtered(`id_object == ${id} AND id_dream == "${id_dream}"`)
-        .sorted('created', true);
+  const loadItens = async () => {
+    const realm = await getRealm();
+    const data = realm
+      .objects('ObjectDream')
+      .filtered(`id_object == ${id} AND id_dream == "${id_dream}"`)
+      .sorted('created', true);
 
-      setItem(data);
-    }
+    setItem(data);
+  };
+
+  useEffect(() => {
     loadItens();
-  }, [id, id_dream]);
+  }, []);
 
   function handleRemoveItemSelect(id, name) {
     Alert.alert(
-      `Apagar  o item ${name}?`,
+      `Selecione uma opção para o item: ${name}?`,
       '',
       [
         {
-          text: 'Sim',
+          text: 'Deletar',
           onPress: () => {
-            removeItemList(id);
+            Alert.alert(`Deletar o item: ${name}`, '', [
+              {
+                text: 'Sim',
+                onPress: () => {
+                  removeItemList(id);
+                },
+                styles: 'cancel',
+              },
+              {
+                text: 'Não',
+                onPress: () => {
+                  console.log('Não');
+                },
+              },
+            ]);
           },
           styles: 'cancel',
         },
         {
-          text: 'Não',
+          text: 'Editar',
           onPress: () => {
             console.log('Não');
           },
@@ -92,6 +106,21 @@ const CanvasItem = ({ title, color, children, id, id_dream }) => {
     });
     const newItem = Item.filter(item => item.id !== id);
     setItem(newItem);
+  }
+
+  async function selectedItem(id, selected) {
+    const realm = await getRealm();
+    if (!selected) {
+      realm.write(() => {
+        realm.create('ObjectDream', { id: id, selected: true }, 'modified');
+      });
+    } else {
+      realm.write(() => {
+        realm.create('ObjectDream', { id: id, selected: false }, 'modified');
+      });
+    }
+
+    loadItens();
   }
 
   function handleDoubleFunction() {
@@ -141,8 +170,14 @@ const CanvasItem = ({ title, color, children, id, id_dream }) => {
             return (
               <TouchableOpacity
                 key={item.id}
+                onPress={() => selectedItem(item.id, item.selected)}
                 onLongPress={() => handleRemoveItemSelect(item.id, item.name)}>
-                <Text style={styles.renderText}>{item.name}</Text>
+                <Text
+                  style={[
+                    item.selected ? styles.selectedText : styles.renderText,
+                  ]}>
+                  {item.name}
+                </Text>
               </TouchableOpacity>
             );
           })}

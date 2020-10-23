@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 
 import CanvasItem from '../../components/CanvasItem';
+
 import Processo from '../../assets/svg/processo.png';
 import Aluna from '../../assets/svg/aluna.png';
 import Custo from '../../assets/svg/custo.png';
@@ -55,7 +56,7 @@ const Item = props => {
           <Image source={Ajuda} style={{ width: 60, height: 60 }} />
         </CanvasItem>
         <CanvasItem
-          title="Quanto preciso para colocar os meus sonhos em prática?"
+          title="Quanto preciso para colocar este sonho em prática?"
           color="#F5B116"
           id={5}
           id_dream={id_dream}>

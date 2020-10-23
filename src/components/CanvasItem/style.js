@@ -73,6 +73,12 @@ const styles = StyleSheet.create({
   renderText: {
     fontSize: 16,
   },
+  selectedText: {
+    fontSize: 16,
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid',
+    fontStyle: 'italic',
+  },
 });
 
 export default styles;

@@ -8,6 +8,7 @@ export default class ObjectsDreamSchema {
       created: 'string',
       id_dream: 'string',
       id_object: 'int',
+      selected: 'bool',
     },
   };
 }
