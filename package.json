@@ -24,6 +24,8 @@
     "react-native-uuid": "^1.4.9",
     "react-native-vector-icons": "^7.1.0",
     "react-native-video": "^5.1.0-alpha8",
+    "react-native-webview": "^10.10.2",
+    "react-native-youtube-iframe": "^1.4.0",
     "realm": "^6.1.1"
   },
   "devDependencies": {

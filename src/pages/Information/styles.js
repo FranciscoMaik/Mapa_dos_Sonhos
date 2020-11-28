@@ -72,4 +72,17 @@ export default StyleSheet.create({
   scrollView: {
     marginBottom: 30,
   },
+
+  youtubeLayout: {
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  viewApresentarion: {
+    width: '90%',
+    alignItems: 'flex-start',
+    marginBottom: 12,
+  },
+  textApresentarion: {
+    fontSize: 18,
+  },
 });

@@ -23,7 +23,9 @@ import styles from './style';
 const CanvasItem = ({ title, color, children, id, id_dream }) => {
   const [Item, setItem] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisibleEdit, setModalVisibleEdit] = useState(false);
   const [inputItem, setInputItem] = useState('');
+  const [idNew, setIdNew] = useState('');
 
   async function handleAddItemListCanvas(id) {
     if (inputItem !== '') {
@@ -61,6 +63,27 @@ const CanvasItem = ({ title, color, children, id, id_dream }) => {
     loadItens();
   }, []);
 
+  const handleAlterItem = async idNew => {
+    console.log('este item ', idNew);
+    console.log('nome item ', inputItem);
+    const realm = await getRealm();
+    realm.write(() => {
+      realm.create('ObjectDream', { id: idNew, name: inputItem }, 'modified');
+    });
+
+    loadItens();
+
+    Keyboard.dismiss;
+    setModalVisibleEdit(false);
+    setInputItem('');
+  };
+
+  const handleEdit = (idItem, name) => {
+    setIdNew(idItem);
+    setModalVisibleEdit(true);
+    setInputItem(name);
+  };
+
   function handleRemoveItemSelect(id, name) {
     Alert.alert(
       `Selecione uma opção para o item: ${name}?`,
@@ -90,7 +113,7 @@ const CanvasItem = ({ title, color, children, id, id_dream }) => {
         {
           text: 'Editar',
           onPress: () => {
-            console.log('Não');
+            handleEdit(id, name);
           },
         },
       ],
@@ -132,6 +155,32 @@ const CanvasItem = ({ title, color, children, id, id_dream }) => {
 
   return (
     <>
+      <View style={styles.centeredView}>
+        <KeyboardAvoidingView>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={modalVisibleEdit}>
+            <View style={styles.inputModal}>
+              <View style={styles.caixaModal}>
+                <TextInput
+                  style={styles.textInputModal}
+                  placeholder="Item"
+                  value={inputItem}
+                  onChangeText={setInputItem}
+                  maxLength={20}
+                />
+                <View style={styles.buttonModal}>
+                  <TouchableHighlight onPress={() => handleAlterItem(idNew)}>
+                    <Image source={Check} style={{ width: 20, height: 20 }} />
+                  </TouchableHighlight>
+                </View>
+              </View>
+            </View>
+          </Modal>
+        </KeyboardAvoidingView>
+      </View>
+
       <View style={styles.centeredView}>
         <KeyboardAvoidingView>
           <Modal
