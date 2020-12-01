@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
-
 import Alvo from '../../assets/svg/lista-de-controle.png';
 import Mapa from '../../assets/svg/mapa_mental.png';
+
+import Skeleton from '../../components/Skeleton';
 
 import styles from './styles';
 
 const Information = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let timer = setInterval(() => {
+      setLoading(false);
+    }, 4000);
+  }, []);
+
   return (
     <>
       <View style={styles.alignMenu}>
@@ -21,12 +30,14 @@ const Information = () => {
           <View style={styles.viewApresentarion}>
             <Text style={styles.textApresentarion}>Vídeo de apresentação</Text>
           </View>
-          <YoutubePlayer
-            forceAndroidAutoplay={true}
-            height={500}
-            width={Dimensions.get('window').width - 20}
-            videoId={'31GIiHxtfvg'}
-          />
+          <Skeleton visible={loading}>
+            <YoutubePlayer
+              forceAndroidAutoplay={true}
+              height={500}
+              width={Dimensions.get('window').width - 20}
+              videoId={'Rz34OdjJeDI'}
+            />
+          </Skeleton>
         </View>
       </View>
     </>

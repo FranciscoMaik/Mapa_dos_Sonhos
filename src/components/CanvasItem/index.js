@@ -64,14 +64,16 @@ const CanvasItem = ({ title, color, children, id, id_dream }) => {
   }, []);
 
   const handleAlterItem = async idNew => {
-    console.log('este item ', idNew);
-    console.log('nome item ', inputItem);
-    const realm = await getRealm();
-    realm.write(() => {
-      realm.create('ObjectDream', { id: idNew, name: inputItem }, 'modified');
-    });
+    if (inputItem !== '') {
+      const realm = await getRealm();
+      realm.write(() => {
+        realm.create('ObjectDream', { id: idNew, name: inputItem }, 'modified');
+      });
 
-    loadItens();
+      loadItens();
+    } else {
+      Alert.alert('Valor inválido!', 'Por favor colocar um valor válido!');
+    }
 
     Keyboard.dismiss;
     setModalVisibleEdit(false);
