@@ -42,7 +42,7 @@ Observações:
 1. Tela ***Home***
 
 <p align="center">
-<img src = "https://user-images.githubusercontent.com/20601076/93275214-b27c5500-f792-11ea-8008-6b5d859a9077.png" width = "250" height = "500">
+<img src = "https://user-images.githubusercontent.com/20601076/100813268-c17fb480-341d-11eb-96dc-d63d47ae3c1e.png" width = "250" height = "500">
 </p>
 
 2. Tela ***Testes Vocacionais***
@@ -51,10 +51,11 @@ Observações:
 <img src = "https://user-images.githubusercontent.com/20601076/93275260-d475d780-f792-11ea-9337-9c58a4a7aabd.png" width = "250" height = "500">
 </p>
 
+
 3. Tela ***Informações***
 
 <p align="center">
-<img src = "https://user-images.githubusercontent.com/20601076/93275300-ed7e8880-f792-11ea-9b79-f7e9072f4c46.png" width = "250" height = "500">
+<img src = "https://user-images.githubusercontent.com/20601076/100813641-85008880-341e-11eb-906e-01e1adcfe885.png" width = "250" height = "500">
 </p>
 
 4. Tela ***Itens***
