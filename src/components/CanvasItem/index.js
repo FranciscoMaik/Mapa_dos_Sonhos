@@ -196,7 +196,6 @@ const CanvasItem = ({ title, color, children, id, id_dream }) => {
                   placeholder="Item"
                   value={inputItem}
                   onChangeText={setInputItem}
-                  maxLength={20}
                 />
                 <View style={styles.buttonModal}>
                   <TouchableHighlight onPress={handleDoubleFunction}>
